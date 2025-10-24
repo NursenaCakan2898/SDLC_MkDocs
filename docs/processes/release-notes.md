@@ -1,0 +1,9 @@
+# Sürüm Notları Şablonu
+
+## vX.Y.Z — YYYY-AA-GG
+### Yeni
+- ...
+### Düzeltmeler
+- ...
+### Kırıcı Değişiklikler
+- ...

@@ -1,0 +1,74 @@
+site_name: Nursprime • SDLC El Kitabı
+site_description: Yazılım yaşam döngüsü, süreçler, test, yayın ve bakım rehberi
+site_url: https://NursenaCakan2898.github.io/SDLC_MkDocs
+repo_url: https://github.com/NursenaCakan2898/SDLC_MkDocs
+edit_uri: ""
+strict: true                     # Nav/dosya hatalarını build aşamasında yakalar
+use_directory_urls: true         # Güzel URL'ler (/sdlc/overview/ gibi)
+
+theme:
+  name: material
+  language: tr
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.tracking
+    - toc.follow
+    - content.code.copy
+    - content.action.edit
+    - search.highlight
+    - search.suggest
+  palette:
+    - scheme: default
+      primary: blue
+      accent: indigo
+    - scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Koyu moda geç
+  icon:
+    repo: fontawesome/brands/github
+
+# Mermaid diyagramları için CDN'i aktif ettim.
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - def_list
+  - attr_list
+  - tables
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.critic
+
+plugins:
+  - search
+
+nav:
+  - Ana Sayfa: index.md
+  - SDLC:
+    - Genel Bakış: sdlc/overview.md
+    - Gereksinimler: sdlc/requirements.md
+    - Tasarım & Mimariler: sdlc/design.md
+    - Geliştirme: sdlc/development.md
+    - Test & Doğrulama: sdlc/testing.md
+    - Yayın (Release/Deploy): sdlc/deployment.md
+    - Bakım & Operasyon: sdlc/maintenance.md
+  - QA:
+    - Test Planı: qa/test-plan.md
+    - Test Vakaları: qa/test-cases.md
+    - Hata Yönetimi: qa/bug-workflow.md
+  - Süreçler:
+    - Branching Stratejisi: processes/branching.md
+    - Code Review & PR: processes/code-review.md
+    - Sürüm Notları Şablonu: processes/release-notes.md
