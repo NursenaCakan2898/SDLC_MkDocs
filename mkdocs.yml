@@ -1,10 +1,10 @@
-site_name: Nursprime • SDLC El Kitabı
+site_name: SDLC El Kitabı
 site_description: Yazılım yaşam döngüsü, süreçler, test, yayın ve bakım rehberi
 site_url: https://NursenaCakan2898.github.io/SDLC_MkDocs
 repo_url: https://github.com/NursenaCakan2898/SDLC_MkDocs
 edit_uri: ""
-strict: true                     # Nav/dosya hatalarını build aşamasında yakalar
-use_directory_urls: true         # Güzel URL'ler (/sdlc/overview/ gibi)
+strict: true
+use_directory_urls: true
 
 theme:
   name: material
@@ -31,28 +31,30 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-# Mermaid diyagramları için CDN'i aktif ettim.
-extra_javascript:
-  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+# extra_javascript kısmı SİLİNDİ (çünkü material teması bunu kendi yapar)
 
 markdown_extensions:
   - admonition
-  - toc:
-      permalink: true
+  - toc
   - def_list
   - attr_list
   - tables
   - footnotes
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.critic
+  - pymdownx.superfences:  # <-- Olması gereken DOĞRU ayar budur
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 plugins:
   - search
+  # <-- 'mermaid2' eklentisi buradan KALDIRILDI
 
 nav:
   - Ana Sayfa: index.md
@@ -72,4 +74,4 @@ nav:
     - Branching Stratejisi: processes/branching.md
     - Code Review & PR: processes/code-review.md
     - Sürüm Notları Şablonu: processes/release-notes.md
-  - Referanslar: references.md      
+  - Referanslar: references.md
