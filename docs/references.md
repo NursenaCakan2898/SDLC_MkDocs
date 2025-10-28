@@ -1,42 +1,54 @@
-# Referanslar (SDLC, Mühendislik, Test, Standartlar)
+# Referanslar (SDLC)
 
-Aşağıdaki kaynaklar SDLC, süreç mühendisliği, test ve devops kültürü için **temel okuma listesi**dir.  
-Listeyi *canlı* tutacağız; eklemek istediğin çalışma olursa PR aç.
+- [Agile Manifesto](https://agilemanifesto.org/)
+- [Scrum Guide](https://scrumguides.org/)
+- [Kanban Guide](https://kanbanguides.org/)
+- [SAFe (Scaled Agile Framework)](https://scaledagileframework.com/)
+- [LeSS (Large-Scale Scrum)](https://less.works/)
+- [ISTQB](https://istqb.org/)
+- [OWASP SAMM](https://owaspsamm.org/)
+- [OWASP ASVS](https://owasp.org/www-project-application-security-verification-standard/)
+- [NIST SSDF](https://www.nist.gov/ssdf)
+- [C4 Model](https://c4model.com/)
+- [12-Factor App](https://12factor.net/)
+- [GitHub Actions Docs](https://docs.github.com/actions)
+- [GitLab CI/CD Docs](https://docs.gitlab.com/ee/ci/)
+- [Azure DevOps Pipelines](https://learn.microsoft.com/azure/devops/pipelines/)
+- [Docker Docs](https://docs.docker.com/)
+- [Kubernetes Docs](https://kubernetes.io/docs/)
+- [Terraform Docs](https://developer.hashicorp.com/terraform)
+- [Ansible Docs](https://docs.ansible.com/)
+- [Prometheus Docs](https://prometheus.io/docs/)
+- [Grafana Docs](https://grafana.com/docs/)
+- [OpenTelemetry Docs](https://opentelemetry.io/docs/)
+- [DORA (DevOps Research & Assessment)](https://dora.dev/)
+- [Google SRE Book (ToC)](https://sre.google/sre-book/table-of-contents/)
 
-## Standartlar & Çerçeveler
-- **ISO/IEC 12207** — Software life cycle processes  
-- **ISO/IEC/IEEE 15288** — System life cycle processes  
-- **ISO/IEC/IEEE 29119** — Software Testing (test süreçleri, dokümantasyon)  
-- **ISO/IEC 25010** — Software product quality model  
-- **CMMI (v2.0)** — Capability Maturity Model Integration  
-- **PMBOK Guide** — Project Management Body of Knowledge  
-- **Agile Manifesto (2001)** — Değerler ve prensipler  
-- **Scrum Guide** — Scrum rol/artefakt/olayları
+- [SDLC Methodologies — CodiLime](https://codilime.com/blog/sdlc-methodologies/)
+- [Waterfall Model — BDTask](https://www.bdtask.com/blog/waterfall-model-in-software-engineering)
+- [V-Model — IAPM](https://www.iapm.net/en/blog/v-model/)
+- [Spiral Meta-Model — GeeksforGeeks](https://www.geeksforgeeks.org/software-engineering/why-spiral-model-is-called-meta-model/)
+- [V-Model vs Agile — Orient Software](https://www.orientsoftware.com/blog/v-model-vs-agile/)
+- [DevOps Lifecycle — Simform](https://www.simform.com/blog/devops-lifecycle/)
 
-## Klasik ve Etkili Yayınlar
-- **Royce, W. (1970).** *Managing the Development of Large Software Systems.* (Waterfall tartışmasının kökü)  
-- **Boehm, B. (1988).** *A Spiral Model of Software Development and Enhancement.* (Risk odaklı spiral)  
-- **Brooks, F. (1987).** *No Silver Bullet: Essence and Accidents of Software Engineering.*  
-- **Pressman, R., Maxim, B.** *Software Engineering: A Practitioner’s Approach.*  
-- **Sommerville, I.** *Software Engineering.*  
-- **McConnell, S.** *Rapid Development* (zaman tuzakları, stratejiler).  
-- **Fowler, M.** *Refactoring* ve *Continuous Integration* yazıları.  
-- **Evans, E.** *Domain-Driven Design.*  
-- **Humphrey, W.** *Managing the Software Process* (CMM/CMMI temelleri).
+- [V-Model & Embedded Testing — Code Intelligence](https://www.code-intelligence.com/blog/everything-about-v-model-and-testing-embedded-software)
+- [Software Types with Examples — Squareboat](https://www.squareboat.com/blog/different-types-of-software-with-examples)
+- [Software Classification — GeeksforGeeks](https://www.geeksforgeeks.org/software-engineering/software-engineering-classification-software/)
 
-## DevOps & Ölçümler
-- **Forsgren, N., Humble, J., Kim, G.** *Accelerate: The Science of Lean Software and DevOps.* (DORA metrikleri)  
-- **Site Reliability Engineering (SRE Book)** — Google SRE (SLA/SLO/SLI, olay yönetimi)  
-- **The Phoenix Project** — Akış, darboğaz, kültür üzerine romanlaştırılmış anlatı.
+- [Martin Fowler — Continuous Integration](https://martinfowler.com/articles/continuousIntegration.html)
+- [Martin Fowler — Strangler Fig Application](https://martinfowler.com/bliki/StranglerFigApplication.html)
+- [GitHub Pages](https://pages.github.com/)
 
-## Test & Kalite
-- **Myers, G., Sandler, C., Badgett, T.** *The Art of Software Testing.*  
-- **Kaner, C., Bach, J., Pettichord, B.** *Lessons Learned in Software Testing.*  
-- **ISO/IEC 29119** — Test seviyeleri, plan/rapor şablonları.
+- [ISO/IEC 12207 (overview)](https://www.iso.org/standard/63712.html)
+- [ISO/IEC/IEEE 15288 (overview)](https://www.iso.org/standard/63711.html)
+- [ISO/IEC 25010 (overview)](https://www.iso.org/standard/45142.html)
+- [ISTQB Syllabus](https://www.istqb.org/certifications/syllabi/)
+- [ArchiMate (The Open Group)](https://publications.opengroup.org/standards/archimate)
 
-## Ek Okumalar
-- **Clean Code / Clean Architecture — Robert C. Martin**  
-- **Continuous Delivery — Jez Humble, David Farley**  
-- **Working Effectively with Legacy Code — Michael Feathers**
+- [No Silver Bullet (ACM Queue excerpt)](https://queue.acm.org/detail.cfm?id=1158891)
+- [Continuous Delivery — Humble & Farley (book page)](https://www.informit.com/store/continuous-delivery-reliable-software-releases-through-9780321601919)
+- [Accelerate — Forsgren, Humble, Kim (book page)](https://itrevolution.com/product/accelerate/)
+- [The DevOps Handbook (book page)](https://itrevolution.com/product/the-devops-handbook/)
+- [ThoughtWorks Technology Radar](https://www.thoughtworks.com/radar)
 
-> Not: “Tüm bilimsel makaleler” hedefi pratikte sonsuz; bu liste **çekirdek** ve “en çok alıntı alan” kaynaklardan başlar. İlerledikçe DOI/link ekleyerek genişletelim.
+> Not: Bazı standartlar (ISO/IEC vb.) ücretli olabilir; yukarıdaki bağlantılar resmi **özet/overview** sayfalarıdır.

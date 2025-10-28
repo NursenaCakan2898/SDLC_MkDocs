@@ -54,7 +54,7 @@ Yazılım, günümüzde kullandığımız her dijital sistemin merkezindedir ve 
 
 Sonuç olarak, bu sınıflandırmaların **hepsi**, karmaşıklığı ne olursa olsun, bir **Yazılım Geliştirme Yaşam Döngüsü (SDLC)** gerektirir. İster bir Windows aygıt sürücüsü (Sistem Yazılımı), ister bir Django web sitesi (Uygulama Yazılımı), ister bir fabrikayı çalıştıran bir RTOS (Gömülü Yazılım) olsun; hepsinin planlanması, tasarlanması, geliştirilmesi, test edilmesi, dağıtılması ve bakımı gerekir.
 
-Bu kılavuzun geri kalanı, bu evrensel SDLC sürecini nasıl yöneteceğimizi detaylandırmaktadır.
+Bu kılguzun geri kalanı, bu evrensel SDLC sürecini nasıl yöneteceğimizi detaylandırmaktadır.
 
 ---
 
@@ -76,8 +76,9 @@ Bu kılavuzun geri kalanı, bu evrensel SDLC sürecini nasıl yöneteceğimizi d
 - **Standart uyumu:** ISO/IEC 12207, 25010 gibi süreç standartlarına doğal olarak yaklaşım sağlar. 
 - **Ölçeklenebilirlik:** Yeni ekip üyeleri sürece kolayca adapte olur; bilgi kişilere bağlı kalmaz.
 
-!!! success "Özet"
-    **Tanımlı süreç + otomasyon + kalite ölçümü + dokümantasyon = öngörülebilir hız ve güvenilir sonuç.**
+> **Özet**
+>
+> **Tanımlı süreç + otomasyon + kalite ölçümü + dokümantasyon = öngörülebilir hız ve güvenilir sonuç.**
 
 ---
 
@@ -93,10 +94,11 @@ Bu kılavuzun geri kalanı, bu evrensel SDLC sürecini nasıl yöneteceğimizi d
 - **Tekrarlanan hatalar:** Öğrenme kültürü ve retrospektif eksikliğinde aynı sorunlar tekrar yaşanır. 
 - **Artan maliyet:** Hatalar geç aşamada fark edildiğinde maliyet katlanarak artar.
 
-!!! info "Defect Cost Eğrisi"
-    Bir hatayı **gereksinim aşamasında** bulmak 1 birim maliyetse, 
-    **testte** 10 birim, **canlı ortamda** ise 100 birime ulaşabilir. 
-    SDLC’nin amacı hataları **erken, ucuz ve sistematik** biçimde yakalamaktır.
+> **Defect Cost Eğrisi**
+>
+> Bir hatayı **gereksinim aşamasında** bulmak 1 birim maliyetse, 
+> **testte** 10 birim, **canlı ortamda** ise 100 birime ulaşabilir. 
+> SDLC’nin amacı hataları **erken, ucuz ve sistematik** biçimde yakalamaktır.
 
 ---
 
@@ -110,8 +112,6 @@ Bu kılavuzun geri kalanı, bu evrensel SDLC sürecini nasıl yöneteceğimizi d
 | Güvenlik | Açık kapatma süresi | ↓ | Sürekli güvenlik taramalarıyla azalır |
 | Kararlılık | Rollback oranı | ↓ | Dağıtım öncesi kontrollü testlerle düşer |
 | Ekip deneyimi | Developer Experience/NPS | ↑ | Net süreçler ve düşük bilişsellik yük sağlar |
-
-
 
 ---
 
@@ -130,4 +130,180 @@ flowchart LR
     REL --> MON["Monitoring/SLI"]
     MON --> PM["Postmortem & RCA"]
     PM -.-> RQ
-```    
+``` 
+
+---
+
+# SDLC Modelleri: Projeniz İçin Doğru Yaklaşımı Seçmek
+
+SDLC'nin *neden* zorunlu olduğunu ve kalite, verimlilik, maliyet gibi temel hedefleri nasıl güvence altına aldığını anladık. Ancak, her proje aynı değildir. Bir **Gömülü Yazılım (Embedded Software)** projesinin risk profili ile bir **Uygulama Yazılımı (Application Software)** projesinin esneklik ihtiyacı farklıdır.
+
+Bu nedenle, SDLC'yi uygulamak için yıllar içinde farklı modeller (yaklaşımlar) geliştirilmiştir. Doğru modeli seçmek, projenizin başarısını doğrudan etkiler. İşte en yaygın SDLC modelleri, nasıl uygulandıkları ve hangi projeler için uygun oldukları.
+
+
+
+## 1. Waterfall Model (Şelale Modeli)
+
+En geleneksel ve katı modeldir. Adını, bir şelalenin suyu gibi, sürecin geri dönülmez bir şekilde (veya çok zor) bir sonraki aşamaya akmasından alır.
+
+* **Nedir?**
+    Katı, doğrusal ve sıralı bir modeldir. Bir aşama tamamen bitmeden bir sonraki aşamaya geçilemez. Geliştirme süreci, baştan sona tek bir büyük döngü olarak planlanır.
+* **Nasıl Uygulanır?**
+    Süreç, keskin sınırlarla ayrılmış şu fazlardan oluşur:
+    1.  **Gereksinimler (Requirements):** Projeden *tüm* beklentiler en başta toplanır, analiz edilir ve dondurulur.
+    2.  **Tasarım (Design):** Sistem mimarisi, veri tabanı yapısı ve arayüzler bu aşamada tasarlanır.
+    3.  **Uygulama (Implementation):** Kodlama bu aşamada yapılır.
+    4.  **Test (Testing/Verification):** Yazılım, gereksinimlere uygunluğu açısından *tüm proje bittikten sonra* test edilir.
+    5.  **Dağıtım (Deployment):** Yazılım müşteriye teslim edilir veya canlı ortama kurulur.
+    6.  **Bakım (Maintenance):** Canlıdaki hatalar düzeltilir veya küçük iyileştirmeler yapılır.
+* **Avantajları:**
+    * Yönetimi ve anlaşılması basittir.
+    * Her aşamanın net çıktıları (deliverables) ve kilometre taşları (milestones) vardır.
+    * Dokümantasyon çok güçlüdür.
+* **Dezavantajları:**
+    * Değişikliğe kesinlikle kapalıdır. Gereksinimlerdeki en ufak bir değişiklik bile tüm süreci başa döndürebilir.
+    * Test aşaması en sonda olduğu için, hatalar çok geç ve yüksek maliyetle bulunur (Bkz. Defect Cost Eğrisi).
+    * Projenin çalışan bir sürümünü görmek için aylar, hatta yıllar gerekebilir.
+* **Ne Zaman Kullanılır?**
+    Gereksinimlerin %100 net olduğu, *hiç değişmeyeceğinden* emin olunan projelerde kullanılır. Günümüzün dinamik yazılım dünyasında nadiren tercih edilir. (Örn: Basit bir donanım sürücüsü, askeri projeler).
+    
+![Waterfall (Şelale) modeli diyagramı](assets/brand/waterfallModel.png)
+
+
+## 2. V-Model (V Modeli - Doğrulama ve Geçerlilik Modeli)
+
+V-Modeli, Waterfall'un test sorununa bir çözüm olarak doğmuştur. Test faaliyetlerini sürecin en başına entegre eder.
+
+* **Nedir?**
+    Waterfall modelinin bir uzantısıdır. Her geliştirme aşamasına karşılık, o aşamanın çıktılarını kontrol edecek bir test (Doğrulama ve Geçerlilik - Verification & Validation) aşaması planlanır.
+* **Nasıl Uygulanır?**
+    Model 'V' harfi şeklindedir. Sol taraf geliştirme (iniş), sağ taraf test (çıkış) aşamalarını temsil eder:
+    * **Sol Taraf (Geliştirme):**
+        1.  Gereksinim Analizi (Karşılığı: Kabul Testleri Planlanır)
+        2.  Sistem Tasarımı (Karşılığı: Sistem Testleri Planlanır)
+        3.  Mimari Tasarım (Karşılığı: Entegrasyon Testleri Planlanır)
+        4.  Modül Tasarımı (Karşılığı: Birim Testler Planlanır)
+    * **Alt Taraf (Kodlama):**
+        5.  Kodlama (Implementation)
+    * **Sağ Taraf (Test):**
+        6.  Birim Testleri (Modül Tasarımını doğrular)
+        7.  Entegrasyon Testleri (Mimari Tasarımı doğrular)
+        8.  Sistem Testleri (Sistem Tasarımını doğrular)
+        9.  Kabul Testleri (Gereksinimleri doğrular)
+* **Avantajları:**
+    * Test planlaması en başından başlar.
+    * Hataların erken yakalanma olasılığı Waterfall'a göre çok daha yüksektir.
+    * Kalite güvencesine (QA) odaklanır.
+* **Dezavantajları:**
+    * Waterfall gibi katıdır (rijittir) ve değişiklik yönetimi zordur.
+    * Hala çalışan bir ürünü görmek için sürecin sonunu beklemek gerekir.
+* **Ne Zaman Kullanılır?**
+    Hatanın maliyetinin felaketle sonuçlanabileceği, güvenliğin kritik olduğu projelerde. Metninizde bahsettiğiniz **Gömülü Yazılımlar (Embedded Software)**, tıbbi cihazlar, otomotiv (ECU yazılımları), havacılık ve savunma sanayi projeleri için idealdir.
+
+![V-Model diyagramı](assets/brand/v-model.png)
+
+
+## 3. Iterative Model (Yinelemeli Model)
+
+Bu model, "dev bir proje yapmak yerine, küçük parçalarla başlayıp, her seferinde büyüterek ilerleyelim" fikrine dayanır.
+
+* **Nedir?**
+    Proje, "yineleme" (iteration) adı verilen küçük döngülere bölünür. Her yinelemede, yazılımın bir önceki sürümüne yeni özellikler eklenir ve çalışan bir sürüm üretilir.
+* **Nasıl Uygulanır?**
+    1.  **Başlangıç Planlaması:** Temel gereksinimler ve mimari belirlenir.
+    2.  **Yineleme 1:** En temel özellikler (çekirdek fonksiyonlar) planlanır, tasarlanır, kodlanır, test edilir ve (genellikle dahili olarak) yayınlanır.
+    3.  **Yineleme 2:** İlk sürümden alınan geri bildirimler ve yeni özellikler planlanır, tasarlanır, kodlanır, test edilir ve yayınlanır.
+    4.  **...ve devamı:** Yazılım, her döngüde daha da zenginleşerek son halini alır.
+* **Avantajları:**
+    * Projenin çalışan bir prototipi çok erken aşamalarda elde edilir.
+    * Geri bildirim (feedback) döngüsü sayesinde riskler erken yönetilir.
+    * Müşteri, süreci daha yakından takip edebilir.
+* **Dezavantajları:**
+    * Başlangıçta net bir mimari kurulmazsa, sistem ileride "yama" gibi büyüyebilir (teknik borç).
+    * Kapsam kayması (scope creep) riski yüksektir; sürekli yeni özellik talepleri gelebilir.
+* **Ne Zaman Kullanılır?**
+    Büyük ve karmaşık projelerde. Gereksinimlerin bir kısmının net, bir kısmının belirsiz olduğu durumlarda.
+
+![Iterative model diyagramı](assets/brand/itterative.png)
+
+
+## 4. Spiral Model (Spiral Model)
+
+Risk yönetimine odaklanan en karmaşık modellerden biridir.
+
+* **Nedir?**
+    Iterative modelin risk analizi ile birleştirilmiş halidir. Her döngü (spiralin bir turu), o anki en büyük riskleri belirlemek ve çözmek üzerine kuruludur.
+* **Nasıl Uygulanır?**
+    Her döngü 4 kadrandan oluşur:
+    1.  **Hedefleri Belirleme:** Bu döngünün hedefleri ve alternatif çözümler belirlenir.
+    2.  **Risk Analizi ve Değerlendirme:** Alternatifler değerlendirilir, riskler (teknik risk, pazar riski vb.) tanımlanır. Bu riskleri çözmek için prototip geliştirilebilir.
+    3.  **Geliştirme ve Test:** Riskler çözüldükten sonra, ürünün o döngüye ait parçası geliştirilir ve test edilir.
+    4.  **Sonraki Döngüyü Planlama:** Döngü değerlendirilir ve bir sonraki spiral turu planlanır.
+* **Avantajları:**
+    * Risk yönetimi konusunda en güçlü modeldir.
+    * Karmaşık ve büyük projeler için uygundur.
+* **Dezavantajları:**
+    * Yönetmesi çok karmaşıktır.
+    * Sürekli risk analizi yapmak uzmanlık gerektirir ve maliyetlidir.
+    * Küçük veya düşük riskli projeler için aşırı (overkill) kalır.
+* **Ne Zaman Kullanılır?**
+    Daha önce yapılmamış, Ar-Ge (R&D) yoğun, teknik risklerin çok yüksek olduğu büyük ölçekli projelerde (Örn: Yeni bir işletim sistemi veya oyun motoru geliştirmek).
+
+![Spiral model diyagramı](assets/brand/spiral.png)
+
+
+## 5. Agile Model (Çevik Metodolojiler)
+
+Agile (Çevik), katı bir modelden ziyade, değişimi kucaklayan bir zihniyet (mindset) ve felsefedir. "Çevik Manifesto" üzerine kuruludur.
+
+* **Nedir?**
+    Değişen gereksinimlere hızla adapte olmayı, müşteri ile sürekli işbirliğini, çalışan yazılımı sık aralıklarla teslim etmeyi ve süreç yerine bireyler arası etkileşimi ön plana çıkaran bir yaklaşımdır.
+* **Nasıl Uygulanır?**
+    Agile'ı uygulamak için kullanılan birçok çerçeve (framework) vardır. En popüler ikisi:
+    * **Scrum:** Proje, "Sprint" adı verilen kısa (genellikle 2-4 hafta) ve zamanı sabit döngülere bölünür.
+        * **Roller:** Product Owner (Ürün Sahibi), Scrum Master (Süreci kolaylaştıran), Development Team (Geliştirme Ekibi).
+        * **Toplantılar (Ritüeller):** Sprint Planning (Sprint Planlama), Daily Scrum (Günlük Toplantı), Sprint Review (Çalışan ürünün sunumu), Sprint Retrospective (Sürecin iyileştirilmesi).
+        * **Araçlar (Artifacts):** Product Backlog (Tüm iş listesi), Sprint Backlog (Sprint'te yapılacak iş listesi).
+    * **Kanban:** İş akışını görselleştirmeye (Kanban Tahtası) ve "Devam Eden İşi" (WIP - Work In Progress) sınırlamaya odaklanır. Amaç, işlerin sistemden akıcı bir şekilde geçmesini sağlamaktır. Sprint gibi katı zaman döngüleri yoktur, sürekli bir akış (continuous flow) vardır.
+* **Avantajları:**
+    * Değişikliklere (gereksinim değişiklikleri) karşı son derece esnektir.
+    * Müşteri memnuniyeti yüksektir, çünkü müşteri sürecin içindedir ve sık sık çalışan bir ürün görür.
+    * Ekip motivasyonunu ve kendi kendini yönetme becerisini artırır.
+* **Dezavantajları:**
+    * Sürekli müşteri veya ürün sahibi katılımı gerektirir.
+    * Projenin "tam olarak" ne zaman biteceğini ve toplam maliyetini en başta görmek zordur.
+    * Dokümantasyon, çalışan yazılıma göre ikinci planda kalabilir.
+* **Ne Zaman Kullanılır?**
+    Gereksinimlerin belirsiz olduğu veya çok sık değiştiği projelerde. Metninizdeki **Uygulama Yazılımları** (özellikle web ve mobil uygulamalar), startup projeleri ve rekabetçi pazarlardaki dijital ürünler için fiili standart haline gelmiştir.
+
+![Agile modeli görseli](assets/brand/agile.png)
+
+
+## 6. DevOps Lifecycle (DevOps Yaşam Döngüsü)
+
+DevOps, katı bir SDLC modeli değil, Agile'ın bir evrimidir. Geliştirme (Development) ve Operasyon (Operations) ekipleri arasındaki duvarları yıkarak tüm yaşam döngüsünü otomatize etmeyi amaçlayan bir kültürdür.
+
+* **Nedir?**
+    Yazılımın planlanmasından geliştirilmesine, test edilmesinden canlıya alınmasına (deployment) ve operasyon (izleme) süreçlerine kadar *tüm* adımların entegre ve sürekli (continuous) olduğu bir yaklaşımdır.
+* **Nasıl Uygulanır?**
+    Genellikle "sonsuzluk döngüsü" (infinity loop) olarak temsil edilir. Metninizdeki **CI/CD Araçları**, **Konteynerleştirme** ve **İzleme** yazılımları bu modelin temel taşlarıdır.
+    1.  **Plan:** (Planlama)
+    2.  **Code:** (Kodlama)
+    3.  **Build:** (Derleme - *Sürekli Entegrasyon (CI)* başlar)
+    4.  **Test:** (Otomatik Testler)
+    5.  **Release:** (Sürüm Paketleme)
+    6.  **Deploy:** (Canlıya Dağıtım - *Sürekli Dağıtım (CD)*)
+    7.  **Operate:** (Operasyon)
+    8.  **Monitor:** (İzleme ve Geri Bildirim)
+    *Bu döngüden elde edilen geri bildirimler, doğrudan bir sonraki "Plan" aşamasını besler.*
+* **Avantajları:**
+    * Yayın (release) sıklığını ve hızını (velocity) muazzam artırır.
+    * Otomasyon sayesinde insan hatasını azaltır ve güvenilirliği (reliability) artırır.
+    * Hata düzeltme (MTTR - Mean Time to Repair) süreleri çok kısalır.
+* **Dezavantajları:**
+    * Sadece araç değil, güçlü bir kültürel değişim gerektirir.
+    * Ciddi bir otomasyon ve altyapı bilgisi (IaC, Konteynerler, CI/CD) gerektirir.
+* **Ne Zaman Kullanılır?**
+    Hizmet olarak Yazılım (SaaS) ürünleri, büyük ölçekli web siteleri, mikroservis mimarileri ve hızlı rekabetin olduğu tüm **Uygulama Yazılımı** ve **DevOps & Otomasyon Yazılımı** projeleri için modern standarttır.
+
+![DevOps yaşam döngüsü diyagramı](assets/brand/devops.png)
